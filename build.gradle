@@ -1,0 +1,67 @@
+import static org.apache.tools.ant.taskdefs.condition.Os.*
+
+plugins {
+    id 'com.github.ksoichiro.console.reporter' version '0.5.0'
+}
+
+apply plugin: 'java'
+apply plugin: 'jacoco'
+
+group 'io.leonis'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+if (!isFamily(FAMILY_WINDOWS) && !isFamily(FAMILY_MAC) && !isFamily(FAMILY_UNIX))
+    throw new GradleException("Unsupported operating system!")
+
+repositories {
+    mavenCentral()
+}
+
+javadoc {
+    source = sourceSets.main.allJava
+    classpath = configurations.compile
+}
+
+compileJava {
+    options.compilerArgs << '-parameters'
+}
+
+dependencies {
+    // math
+    compile 'org.nd4j:nd4j-native:0.8.0'
+    if (isFamily(FAMILY_WINDOWS))
+        compile 'org.nd4j:nd4j-native:0.8.0:windows-x86_64'
+    else if (isFamily(FAMILY_MAC))
+        compile 'org.nd4j:nd4j-native:0.8.0:macosx-x86_64'
+    else if (isFamily(FAMILY_UNIX))
+        compile 'org.nd4j:nd4j-native:0.8.0:linux-x86_64'
+
+    // rx
+    compile 'io.projectreactor:reactor-core:3.0.5.RELEASE'
+    compile 'io.projectreactor.ipc:reactor-ipc:0.6.1.RELEASE'
+    compile 'io.projectreactor.ipc:reactor-netty:0.6.2.RELEASE'
+    compile 'org.reactivestreams:reactive-streams:1.0.0'
+
+    // logging
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile 'org.slf4j:slf4j-simple:1.7.25'
+
+    // java impl
+    compile 'org.projectlombok:lombok:1.16.14'
+
+    // ui
+    compile 'com.googlecode.lanterna:lanterna:3.0.0-rc1'
+
+    // tests
+    testCompile 'org.testng:testng:6.11'
+    testCompile 'io.projectreactor.addons:reactor-test:3.0.7.RELEASE'
+}
+
+test {
+    useTestNG()
+    testLogging {
+        events "PASSED", "STARTED", "FAILED", "SKIPPED"
+        showStandardStreams = true
+    }
+}
