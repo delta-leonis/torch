@@ -20,8 +20,6 @@ javadoc {
 dependencies {
     // rx
     compile 'io.projectreactor:reactor-core:3.0.5.RELEASE'
-    compile 'io.projectreactor.ipc:reactor-ipc:0.6.1.RELEASE'
-    compile 'io.projectreactor.ipc:reactor-netty:0.6.2.RELEASE'
 
     // java impl
     compile 'org.projectlombok:lombok:1.16.14'
