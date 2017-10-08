@@ -1,4 +1,4 @@
-package io.leonis.torch;
+package io.leonis.torch.handlers;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.gui2.*;
@@ -8,7 +8,7 @@ import com.googlecode.lanterna.input.*;
 /**ss
  * @author jeroen.dejong.
  */
-public class MoveWindowBehaviour implements Listener {
+public class MoveWindowHandler implements Listener {
   @Override
   public boolean onUnhandledKeyStroke(final TextGUI textGUI, final KeyStroke keyStroke) {
     if (keyStroke.isAltDown()) {

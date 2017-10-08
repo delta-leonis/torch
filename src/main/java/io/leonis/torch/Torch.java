@@ -4,6 +4,7 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.gui2.*;
 import com.googlecode.lanterna.screen.*;
 import com.googlecode.lanterna.terminal.*;
+import io.leonis.torch.handlers.*;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.function.*;
@@ -31,8 +32,8 @@ public final class Torch {
           new DefaultWindowManager(),
           null,
           new ZosmaBackground(TextColor.ANSI.BLUE, "Background text")));
-    textGUI.addListener(new MoveWindowBehaviour());
-    textGUI.addListener(new CycleWindowBehaviour());
+    textGUI.addListener(new MoveWindowHandler());
+    textGUI.addListener(new CycleWindowHandler());
     ((AsynchronousTextGUIThread)textGUI.getGUIThread()).start();
   }
 }
