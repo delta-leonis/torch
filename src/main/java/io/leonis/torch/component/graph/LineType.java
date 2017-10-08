@@ -2,13 +2,16 @@ package io.leonis.torch.component.graph;
 
 import com.googlecode.lanterna.TextCharacter;
 import java.util.*;
+import java.util.function.Function;
 
 /**
- * Describes how a line should be displayed on a graph.
+ * The Class LineType
+ *
+ * Provides a {@link TextCharacter} appropriate for a provided ratio.
  *
  * @author Thomas Hakkers
  */
-public enum LineType {
+public enum LineType implements Function<Double, TextCharacter> {
   THICK(
       '█',
       Arrays.asList('▄'),
@@ -37,9 +40,8 @@ public enum LineType {
    *
    * @param ratio the represented value between 0-1. (negative characters chosen if value is negative)
    * @return The {@link TextCharacter} that belongs to the given value.
-   * TODO codegolf
    */
-  public TextCharacter getCharacter(final Double ratio) {
+  public TextCharacter apply(final Double ratio) {
     if(ratio % 1 == 0)
       return new TextCharacter(defaultCharacter);
     return new TextCharacter(
