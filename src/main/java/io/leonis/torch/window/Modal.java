@@ -1,34 +1,28 @@
 package io.leonis.torch.window;
 
 import com.googlecode.lanterna.gui2.*;
-import java.util.Arrays;
+import java.util.*;
+import lombok.AllArgsConstructor;
+import lombok.experimental.Delegate;
 
 /**
  * The Class Modal.
  *
  * @author Jeroen de Jong
  */
-public final class Modal extends BasicWindow {
+public final class Modal implements Window {
+  @Delegate
+  private final Window target;
 
-  /**
-   * Instantiates a new Basic modal.
-   *
-   * @param title the title
-   */
-  public Modal(final String title) {
-    this(title, null);
+  public Modal(Window target) {
+    Set<Hint> hints = new HashSet<>(target.getHints());
+    hints.add(Hint.MODAL);
+    hints.add(Hint.CENTERED);
+    target.setHints(hints);
+    this.target = target;
   }
 
-  /**
-   * Instantiates a new Basic modal.
-   *
-   * @param title     the title
-   * @param component the component
-   */
-  public Modal(final String title, final Component component) {
-    super(title);
-    this.setHints(Arrays.asList(Hint.MODAL, Hint.CENTERED));
-    this.setCloseWindowWithEscape(true);
-    this.setComponent(component);
+  public boolean getCloseWindowWithEscape() {
+    return true;
   }
 }
