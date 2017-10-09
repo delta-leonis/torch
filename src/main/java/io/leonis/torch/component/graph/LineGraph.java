@@ -5,7 +5,7 @@ import com.googlecode.lanterna.gui2.*;
 import java.awt.Color;
 import java.util.List;
 
-import io.leonis.torch.Gradient;
+import java.util.function.Function;
 import lombok.*;
 
 /**
@@ -17,19 +17,18 @@ import lombok.*;
 @Value
 @AllArgsConstructor
 public class LineGraph extends AbstractComponent<LineGraph> {
-  private final LineType lineType;
-  private final Gradient gradient;
+  private final Function<Double, TextCharacter> lineType;
 
   private final List<? extends Number> data;
 
   private final Double min, max;
 
   public LineGraph(final List<? extends Number> data) {
-    this(LineType.THICK, new Gradient(Color.BLACK, Color.BLACK), data);
+    this(LineType.THICK, data);
   }
 
-  public LineGraph(final LineType line, final Gradient gradient, List<? extends Number> data) {
-    this(line, gradient, data,
+  public LineGraph(final Function<Double, TextCharacter> line, List<? extends Number> data) {
+    this(line, data,
         data.stream().mapToDouble(Number::doubleValue).min().orElse(0),
         data.stream().mapToDouble(Number::doubleValue).max().orElse(1));
   }
@@ -47,7 +46,10 @@ public class LineGraph extends AbstractComponent<LineGraph> {
         graphics.drawImage(new TerminalPosition(0, 0),
             new GraphImage(
               component.getPreferredSize().getColumns(),
-              component.getPreferredSize().getRows(), getMin(), getMax(), lineType, gradient)
+              component.getPreferredSize().getRows(),
+              component.getMin(),
+              component.getMax(),
+              lineType)
         .apply(component.getData()));
       }
     };
