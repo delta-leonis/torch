@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.function.*;
 
-import io.leonis.torch.component.ZosmaBackground;
+import io.leonis.torch.component.TextBackground;
 
 /**
  * The Class Torch.
@@ -31,7 +31,7 @@ public final class Torch {
           screen,
           new DefaultWindowManager(),
           null,
-          new ZosmaBackground(TextColor.ANSI.BLUE, "Background text")));
+          new TextBackground(TextColor.ANSI.BLUE, "Background text")));
     textGUI.addListener(new MoveWindowHandler());
     textGUI.addListener(new CycleWindowHandler());
     ((AsynchronousTextGUIThread)textGUI.getGUIThread()).start();

@@ -7,20 +7,19 @@ import lombok.Value;
 import java.awt.Color;
 
 /**
+ * The Class TextBackground
  *
- * @author jeroen.dejong.
+ * This class is basically an {@link EmptySpace} with a text on top. It will center the text based
+ * on the current size of the {@link com.googlecode.lanterna.screen.Screen}.
+ *
+ * @author Jeroen de Jong
  */
-@Value
-public class ZosmaBackground extends EmptySpace {
+public class TextBackground extends EmptySpace {
 
-  private Label text;
+  private final Label text;
 
-  public ZosmaBackground(String text){
-    this(TextColor.ANSI.BLUE, text);
-  }
-
-  public ZosmaBackground(TextColor color, String text) {
-    super(color);
+  public TextBackground(final TextColor background, final String text) {
+    super(background);
     this.text = new Label(text);
   }
 
@@ -29,12 +28,12 @@ public class ZosmaBackground extends EmptySpace {
     return new ComponentRenderer<EmptySpace>() {
 
       @Override
-      public TerminalSize getPreferredSize(EmptySpace component) {
+      public TerminalSize getPreferredSize(final EmptySpace component) {
         return component.getParent().getSize();
       }
 
       @Override
-      public void drawComponent(TextGUIGraphics graphics, EmptySpace component) {
+      public void drawComponent(final TextGUIGraphics graphics, final EmptySpace component) {
         graphics.applyThemeStyle(component.getThemeDefinition().getNormal());
         if(getColor() != null) {
           graphics.setBackgroundColor(getColor());
