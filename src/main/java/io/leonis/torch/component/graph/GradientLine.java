@@ -1,6 +1,6 @@
 package io.leonis.torch.component.graph;
 
-import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.*;
 import io.leonis.torch.Gradient;
 import java.util.function.Function;
 import lombok.AllArgsConstructor;
@@ -15,8 +15,8 @@ import lombok.AllArgsConstructor;
  */
 @AllArgsConstructor
 public class GradientLine implements Function<Double, TextCharacter> {
-  private final Gradient gradient;
-  private final LineType line;
+  private final Function<Double, TextColor> gradient;
+  private final Function<Double, TextCharacter> line;
 
   @Override
   public TextCharacter apply(final Double ratio) {
