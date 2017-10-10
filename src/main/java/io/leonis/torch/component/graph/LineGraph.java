@@ -16,6 +16,7 @@ import lombok.*;
  */
 @Value
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper=true)
 public class LineGraph extends AbstractComponent<LineGraph> {
   private final Function<Double, TextCharacter> lineType;
 
