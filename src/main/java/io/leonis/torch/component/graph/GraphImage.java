@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.IntStream;
 
-import io.leonis.torch.Gradient;
-import lombok.Value;
+import lombok.AllArgsConstructor;
 
 /**
  * A {@link BasicTextImage} that represents a graph based on a list of data.
@@ -16,14 +15,13 @@ import lombok.Value;
  * @since 7-5-17
  * //TODO Ensure amount of workingness is above 0
  */
-@Value
+@AllArgsConstructor
 public final class GraphImage implements Function<List<? extends Number>, TextImage> {
   private final int columns;
   private final int rows;
   private final Double minimumY;
   private final Double maximumY;
-  private final LineType lineType;
-  private final Gradient gradient;
+  private final Function<Double, TextCharacter> lineSupplier;
 
   @Override
   public TextImage apply(final List<? extends Number> data) {
@@ -45,10 +43,12 @@ public final class GraphImage implements Function<List<? extends Number>, TextIm
                   rowValue > xAxisRow
                       ? this.computeRow(currentRow, rowValue, true)
                       : this.computeRow(currentRow, rowValue, false))
-              .forEach(row ->
-                  image.setCharacterAt(
-                      currentColumn - startingColumn, rows - row,
-                      lineType.getCharacter(((double)rows - row) / ((double)rows - 0))));
+              .forEach(row -> {
+                double ratio = ((double)rows - row) / ((double)rows - 0);
+                image.setCharacterAt(
+                    currentColumn - startingColumn, rows - row,
+                            lineSupplier.apply(ratio));
+              });
         });
 
     return image;
