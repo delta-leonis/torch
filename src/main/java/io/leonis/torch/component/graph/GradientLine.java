@@ -1,7 +1,6 @@
 package io.leonis.torch.component.graph;
 
 import com.googlecode.lanterna.*;
-import io.leonis.torch.Gradient;
 import java.util.function.Function;
 import lombok.AllArgsConstructor;
 

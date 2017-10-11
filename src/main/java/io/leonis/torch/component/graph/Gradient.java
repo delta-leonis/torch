@@ -1,4 +1,4 @@
-package io.leonis.torch;
+package io.leonis.torch.component.graph;
 
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.TextColor.RGB;

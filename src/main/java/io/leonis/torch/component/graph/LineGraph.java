@@ -2,7 +2,6 @@ package io.leonis.torch.component.graph;
 
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.gui2.*;
-import java.awt.Color;
 import java.util.List;
 
 import java.util.function.Function;
