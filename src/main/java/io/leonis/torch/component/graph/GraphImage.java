@@ -1,68 +1,73 @@
 package io.leonis.torch.component.graph;
 
 import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.graphics.*;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.IntStream;
-
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.BasicTextImage;
+import com.googlecode.lanterna.graphics.TextImage;
 import lombok.AllArgsConstructor;
 
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.IntStream;
+
 /**
- * A {@link BasicTextImage} that represents a graph based on a list of data.
+ * The class GraphImage
+ *
+ * Provides {@link BasicTextImage} that represents a graph based on a list of data.
  *
  * @author Thomas Hakkers
  * @since 7-5-17
- * //TODO Ensure amount of workingness is above 0
  */
 @AllArgsConstructor
-public final class GraphImage implements Function<List<? extends Number>, TextImage> {
+public final class GraphImage implements Supplier<TextImage> {
   private final int columns;
   private final int rows;
   private final Double minimumY;
   private final Double maximumY;
+  private final List<Double> data;
   private final Function<Double, TextCharacter> lineSupplier;
+  private final Function<Double, TextColor.RGB> lineColor;
 
   @Override
-  public TextImage apply(final List<? extends Number> data) {
+  public TextImage get() {
     final BasicTextImage image = new BasicTextImage(this.columns, this.rows);
-    image.setAll(new TextCharacter(' '));
 
     final int startingColumn = Math.max(0, data.size() - columns);
     // Keep xAxisRow within range [0, rows]
     final int xAxisRow = Math.max(
         0,
-        Math.min(this.computeColumn(0), this.rows));
+        Math.min((int)this.computeColumn(0), this.rows));
 
     IntStream.range(startingColumn, data.size())
         .forEach(currentColumn -> {
-          final int rowValue = this.computeColumn(data.get(currentColumn));
-          IntStream.rangeClosed(this.computeRow(rowValue, xAxisRow, true),
-              this.computeRow(rowValue, xAxisRow, false))
-              .map(currentRow ->
-                  rowValue > xAxisRow
-                      ? this.computeRow(currentRow, rowValue, true)
-                      : this.computeRow(currentRow, rowValue, false))
-              .forEach(row -> {
-                double ratio = ((double)rows - row) / ((double)rows - 0);
-                image.setCharacterAt(
-                    currentColumn - startingColumn, rows - row,
-                            lineSupplier.apply(ratio));
-              });
+          Double number = data.get(currentColumn);
+          final double rowValue = this.computeColumn(number);
+          if(number > 0d)
+            IntStream.rangeClosed(xAxisRow, (int)Math.ceil(rowValue))
+                .forEach(row -> {
+                  double ratio = ((double)rows - row) / ((double)rows - 0);
+                  image.setCharacterAt(
+                      currentColumn, rows - row,
+                      lineSupplier.apply(row > rowValue ? rowValue : row)
+                          .withForegroundColor(lineColor.apply(ratio)));
+                });
+          else
+            IntStream.rangeClosed((int)Math.floor(rowValue), xAxisRow)
+                .forEach(row -> {
+                  double ratio = ((double)rows - row) / ((double)rows - 0);
+                  image.setCharacterAt(
+                      currentColumn, rows - row,
+                      lineSupplier.apply(row > rowValue ? row : -rowValue)
+                          .withForegroundColor(lineColor.apply(ratio)));
+                });
         });
 
     return image;
   }
 
-  private int computeRow(final int currentRow, final int rowValue, final boolean positive) {
-    if (positive)
-      return currentRow > rowValue ? rowValue : currentRow;
-    else
-      return currentRow > rowValue ? currentRow : rowValue;
-  }
-
-  private int computeColumn(final Number value) {
-    return this.rows * ((int) ((value.doubleValue() - this.minimumY)
-        / (this.maximumY - this.minimumY)));
+  private double computeColumn(final Number value) {
+    return this.rows * ((value.doubleValue() - this.minimumY)
+        / (this.maximumY - this.minimumY));
   }
 }

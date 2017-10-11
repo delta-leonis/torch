@@ -1,7 +1,9 @@
 package io.leonis.torch.component.graph;
 
 import com.googlecode.lanterna.TextCharacter;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Function;
 
 /**
@@ -19,8 +21,8 @@ public enum LineType implements Function<Double, TextCharacter> {
   ),
   THIN(
       '|',
-      Arrays.asList('¡', ':', '.'),
-      Arrays.asList('!', ':', '\'')
+      Arrays.asList('.', ':', '¡'),
+      Arrays.asList('\'', ':', '!')
   );
 
   private final Character defaultCharacter;
@@ -50,6 +52,6 @@ public enum LineType implements Function<Double, TextCharacter> {
   }
 
   private Character valueToCharacter(final List<Character> characterList, final double value) {
-    return characterList.get((int) (characterList.size() * (value % 1)));
+    return characterList.get((int) (characterList.size() * (Math.abs(value) % 1)));
   }
 }
