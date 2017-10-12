@@ -21,7 +21,7 @@ public final class RxPanel extends Panel {
           componentFlux.next().subscribe(this::addComponent);
           return componentFlux;
         })
-        .buffer(2,1)
+        .buffer(2, 1)
         .subscribe(apparentlyNotAnTuple -> {
           this.removeComponent(apparentlyNotAnTuple.get(0));
           this.addComponent(apparentlyNotAnTuple.get(1));
@@ -29,7 +29,8 @@ public final class RxPanel extends Panel {
     return this;
   }
 
-  public RxPanel addComponent(final Publisher<? extends Component> publisher, final LayoutData layoutData) {
+  public RxPanel addComponent(final Publisher<? extends Component> publisher,
+      final LayoutData layoutData) {
     return this.addComponent(
         Flux.from(publisher).map(component -> component.setLayoutData(layoutData))
     );

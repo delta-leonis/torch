@@ -5,16 +5,19 @@ import com.googlecode.lanterna.gui2.*;
 import com.googlecode.lanterna.gui2.TextGUI.Listener;
 import com.googlecode.lanterna.input.KeyStroke;
 
-/**ss
+/**
+ * ss
+ *
  * @author jeroen.dejong.
  */
 public class MoveWindowHandler implements Listener {
+
   @Override
   public boolean onUnhandledKeyStroke(final TextGUI textGUI, final KeyStroke keyStroke) {
     if (keyStroke.isAltDown()) {
       final Interactable target = textGUI.getFocusedInteractable();
       final TerminalPosition position = target.getPosition();
-      switch(keyStroke.getKeyType()) {
+      switch (keyStroke.getKeyType()) {
         case ArrowDown:
           target.setPosition(position.withRelative(new TerminalPosition(0, 1)));
           return true;

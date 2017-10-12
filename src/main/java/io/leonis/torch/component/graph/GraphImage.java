@@ -17,6 +17,7 @@ import lombok.AllArgsConstructor;
  */
 @AllArgsConstructor
 public final class GraphImage implements Supplier<TextImage> {
+
   private final int columns;
   private final int rows;
   private final Double minimumY;
@@ -33,30 +34,31 @@ public final class GraphImage implements Supplier<TextImage> {
     // Keep xAxisRow within range [0, rows]
     final int xAxisRow = Math.max(
         0,
-        Math.min((int)this.computeColumn(0), this.rows));
+        Math.min((int) this.computeColumn(0), this.rows));
 
     IntStream.range(startingColumn, data.size())
         .forEach(currentColumn -> {
           Double number = data.get(currentColumn);
           final double rowValue = this.computeColumn(number);
-          if(number > 0d)
-            IntStream.rangeClosed(xAxisRow, (int)Math.ceil(rowValue))
+          if (number > 0d) {
+            IntStream.rangeClosed(xAxisRow, (int) Math.ceil(rowValue))
                 .forEach(row -> {
-                  double ratio = ((double)rows - row) / ((double)rows - 0);
+                  double ratio = ((double) rows - row) / ((double) rows - 0);
                   image.setCharacterAt(
                       currentColumn, rows - row,
                       lineSupplier.apply(row > rowValue ? rowValue : row)
                           .withForegroundColor(lineColor.apply(ratio)));
                 });
-          else
-            IntStream.rangeClosed((int)Math.floor(rowValue), xAxisRow)
+          } else {
+            IntStream.rangeClosed((int) Math.floor(rowValue), xAxisRow)
                 .forEach(row -> {
-                  double ratio = ((double)rows - row) / ((double)rows - 0);
+                  double ratio = ((double) rows - row) / ((double) rows - 0);
                   image.setCharacterAt(
                       currentColumn, rows - row,
                       lineSupplier.apply(row > rowValue ? row : -rowValue)
                           .withForegroundColor(lineColor.apply(ratio)));
                 });
+          }
         });
 
     return image;

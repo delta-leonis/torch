@@ -10,6 +10,7 @@ import lombok.experimental.Delegate;
  * @author Jeroen de Jong
  */
 public final class Modal implements Window {
+
   @Delegate
   private final Window target;
 

@@ -14,7 +14,7 @@ public class CycleWindowHandler implements Listener {
     if (textGUI instanceof WindowBasedTextGUI) {
       if (keyStroke.getKeyType().equals(KeyType.Character) && "[]"
           .contains(keyStroke.getCharacter().toString())) {
-        ((WindowBasedTextGUI)textGUI).cycleActiveWindow(keyStroke.getCharacter().equals('['));
+        ((WindowBasedTextGUI) textGUI).cycleActiveWindow(keyStroke.getCharacter().equals('['));
         return true;
       }
     }

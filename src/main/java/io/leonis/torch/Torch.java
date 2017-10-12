@@ -20,15 +20,30 @@ import lombok.AllArgsConstructor;
  * @author Jeroen de Jong
  */
 @AllArgsConstructor
-public final class Torch implements Runnable{
+public final class Torch implements Runnable {
 
   private final Consumer<WindowBasedTextGUI> drawUnit;
   private final EmptySpace background;
 
+  // TODO Remove. Currently here for debugging LineGraph
+  public static void main(String[] args) throws IOException {
+    new Thread(new Torch(
+        (gui) -> {
+          BasicWindow wat = new BasicWindow("wat");
+          wat.setComponent(new LineGraph(LineType.THIN, new Gradient(Color.RED, Color.BLUE),
+              IntStream.rangeClosed(1, 20).mapToDouble(i -> (double) i)
+                  .map(d -> Math.sin(d * 2 * Math.PI / 20d)).boxed().collect(Collectors.toList())));
+          gui.addWindowAndWait(wat);
+        },
+        new TextBackground(TextColor.ANSI.BLUE, "Background text")
+    )).start();
+  }
+
   @Override
   public void run() {
     try {
-      final Terminal terminal = new DefaultTerminalFactory(System.out, System.in, Charset.forName("UTF8")).createTerminal();
+      final Terminal terminal = new DefaultTerminalFactory(System.out, System.in,
+          Charset.forName("UTF8")).createTerminal();
       Screen screen = new VirtualScreen(new TerminalScreen(terminal));
       screen.startScreen();
       WindowBasedTextGUI gui = new MultiWindowTextGUI(
@@ -39,22 +54,8 @@ public final class Torch implements Runnable{
       gui.addListener(new CycleWindowHandler());
       drawUnit.accept(gui);
 
-    } catch(IOException ioe) {
+    } catch (IOException ioe) {
       throw new RuntimeException("Couldn't start " + ioe);
     }
-  }
-
-  // TODO Remove. Currently here for debugging LineGraph
-  public static void main(String[] args) throws IOException {
-    new Thread(new Torch(
-        (gui) -> {
-          BasicWindow wat = new BasicWindow("wat");
-          wat.setComponent(new LineGraph(LineType.THIN, new Gradient(Color.RED, Color.BLUE),
-              IntStream.rangeClosed(1,20).mapToDouble(i -> (double)i)
-                  .map(d -> Math.sin(d * 2 * Math.PI / 20d)).boxed().collect(Collectors.toList())));
-          gui.addWindowAndWait(wat);
-        },
-        new TextBackground(TextColor.ANSI.BLUE, "Background text")
-    )).start();
   }
 }

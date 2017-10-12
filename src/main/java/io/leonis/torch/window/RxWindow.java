@@ -9,6 +9,7 @@ import reactor.core.scheduler.Schedulers;
  * @author jeroen.dejong.
  */
 public final class RxWindow extends BasicWindow {
+
   public RxWindow(
       final String title,
       final Publisher<Component> publisher

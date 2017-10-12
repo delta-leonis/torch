@@ -15,10 +15,12 @@ import lombok.AllArgsConstructor;
  */
 @AllArgsConstructor
 public final class Gradient implements Function<Double, TextColor.RGB> {
+
   private final Color minColor, maxColor;
 
   /**
    * Controls what color a value on the graph should have.
+   *
    * @param ratio ratio between 0-1
    * @return The {@link TextColor} for the specified value.
    */

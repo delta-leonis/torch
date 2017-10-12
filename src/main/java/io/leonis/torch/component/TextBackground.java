@@ -33,11 +33,13 @@ public class TextBackground extends EmptySpace {
       @Override
       public void drawComponent(final TextGUIGraphics graphics, final EmptySpace component) {
         graphics.applyThemeStyle(component.getThemeDefinition().getNormal());
-        if(getColor() != null) {
+        if (getColor() != null) {
           graphics.setBackgroundColor(getColor());
           text.setBackgroundColor(getColor());
           Color brighterColor = getColor().toColor().brighter();
-          text.setForegroundColor(new TextColor.RGB(brighterColor.getRed(), brighterColor.getGreen(), brighterColor.getBlue()));
+          text.setForegroundColor(
+              new TextColor.RGB(brighterColor.getRed(), brighterColor.getGreen(),
+                  brighterColor.getBlue()));
         }
         graphics.fill(' ');
         // TODO this should be centered

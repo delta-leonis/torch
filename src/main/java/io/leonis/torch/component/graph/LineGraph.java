@@ -14,8 +14,9 @@ import lombok.*;
  */
 @Value
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper=true)
+@EqualsAndHashCode(callSuper = true)
 public class LineGraph extends AbstractComponent<LineGraph> {
+
   private final Function<Double, TextCharacter> lineType;
   private final Function<Double, TextColor.RGB> lineColor;
 
@@ -24,7 +25,7 @@ public class LineGraph extends AbstractComponent<LineGraph> {
   private final Double min, max;
 
   public LineGraph(final List<Double> data) {
-    this(LineType.THICK, ignored -> new TextColor.RGB(0,0,255), data);
+    this(LineType.THICK, ignored -> new TextColor.RGB(0, 0, 255), data);
   }
 
   public LineGraph(
@@ -49,12 +50,12 @@ public class LineGraph extends AbstractComponent<LineGraph> {
       public void drawComponent(final TextGUIGraphics graphics, final LineGraph component) {
         graphics.drawImage(new TerminalPosition(0, 0),
             new GraphImage(
-              component.getPreferredSize().getColumns(),
-              component.getPreferredSize().getRows(),
-              component.getMin(),
-              component.getMax(),
-              component.getData(),
-              lineType, lineColor).get());
+                component.getPreferredSize().getColumns(),
+                component.getPreferredSize().getRows(),
+                component.getMin(),
+                component.getMax(),
+                component.getData(),
+                lineType, lineColor).get());
       }
     };
   }
