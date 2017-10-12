@@ -1,15 +1,11 @@
 package io.leonis.torch.component.graph;
 
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.BasicTextImage;
-import com.googlecode.lanterna.graphics.TextImage;
-import lombok.AllArgsConstructor;
-
+import com.googlecode.lanterna.*;
+import com.googlecode.lanterna.graphics.*;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.*;
 import java.util.stream.IntStream;
+import lombok.AllArgsConstructor;
 
 /**
  * The class GraphImage

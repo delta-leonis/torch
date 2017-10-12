@@ -3,7 +3,7 @@ package io.leonis.torch.handlers;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.gui2.*;
 import com.googlecode.lanterna.gui2.TextGUI.Listener;
-import com.googlecode.lanterna.input.*;
+import com.googlecode.lanterna.input.KeyStroke;
 
 /**ss
  * @author jeroen.dejong.

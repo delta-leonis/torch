@@ -1,8 +1,7 @@
 package io.leonis.torch.window;
 
-import com.googlecode.lanterna.gui2.*;
+import com.googlecode.lanterna.gui2.Window;
 import java.util.*;
-import lombok.AllArgsConstructor;
 import lombok.experimental.Delegate;
 
 /**

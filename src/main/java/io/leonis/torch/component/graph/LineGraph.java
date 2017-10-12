@@ -1,19 +1,10 @@
 package io.leonis.torch.component.graph;
 
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.gui2.AbstractComponent;
-import com.googlecode.lanterna.gui2.Component;
-import com.googlecode.lanterna.gui2.ComponentRenderer;
-import com.googlecode.lanterna.gui2.TextGUIGraphics;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Value;
-
+import com.googlecode.lanterna.*;
+import com.googlecode.lanterna.gui2.*;
 import java.util.List;
 import java.util.function.Function;
+import lombok.*;
 
 /**
  * The {@link Component} LineGraph
@@ -36,7 +27,11 @@ public class LineGraph extends AbstractComponent<LineGraph> {
     this(LineType.THICK, ignored -> new TextColor.RGB(0,0,255), data);
   }
 
-  public LineGraph(final Function<Double, TextCharacter> line, final Function<Double, TextColor.RGB> lineColor, List<Double> data) {
+  public LineGraph(
+      final Function<Double, TextCharacter> line,
+      final Function<Double, TextColor.RGB> lineColor,
+      final List<Double> data
+  ) {
     this(line, lineColor, data,
         data.stream().mapToDouble(Number::doubleValue).min().orElse(0),
         data.stream().mapToDouble(Number::doubleValue).max().orElse(1));

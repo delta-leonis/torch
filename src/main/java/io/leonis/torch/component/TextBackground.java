@@ -2,8 +2,6 @@ package io.leonis.torch.component;
 
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.gui2.*;
-import lombok.Value;
-
 import java.awt.Color;
 
 /**

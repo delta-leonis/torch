@@ -1,9 +1,7 @@
 package io.leonis.torch.component.graph;
 
 import com.googlecode.lanterna.TextCharacter;
-
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.function.Function;
 
 /**
