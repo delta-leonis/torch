@@ -42,18 +42,16 @@ public final class Torch implements Runnable {
   @Override
   public void run() {
     try {
-      final Terminal terminal = new DefaultTerminalFactory(System.out, System.in,
-          Charset.forName("UTF8")).createTerminal();
-      Screen screen = new VirtualScreen(new TerminalScreen(terminal));
+      Screen screen = new VirtualScreen(
+                        new TerminalScreen(
+                            new DefaultTerminalFactory()
+                                .setMouseCaptureMode(MouseCaptureMode.CLICK_RELEASE)
+                                .createTerminal()));
       screen.startScreen();
-      WindowBasedTextGUI gui = new MultiWindowTextGUI(
-          screen,
-          new DefaultWindowManager(),
-          background);
+      WindowBasedTextGUI gui = new MultiWindowTextGUI(screen,new DefaultWindowManager(),background);
       gui.addListener(new MoveWindowHandler());
       gui.addListener(new CycleWindowHandler());
       drawUnit.accept(gui);
-
     } catch (IOException ioe) {
       throw new RuntimeException("Couldn't start " + ioe);
     }
