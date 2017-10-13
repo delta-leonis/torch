@@ -15,7 +15,7 @@ public class MoveWindowHandler implements Listener {
   @Override
   public boolean onUnhandledKeyStroke(final TextGUI textGUI, final KeyStroke keyStroke) {
     Window window = ((MultiWindowTextGUI) textGUI).getActiveWindow();
-    if(!keyStroke.isAltDown() || window == null)
+    if(!keyStroke.isAltDown())
       return false;
     window.setPosition(window.getPosition().withRelative(this.relativeMove(keyStroke)));
     return true;
