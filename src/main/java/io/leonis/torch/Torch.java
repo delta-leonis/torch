@@ -48,13 +48,14 @@ public final class Torch implements Runnable {
       Screen screen = new VirtualScreen(
                         new TerminalScreen(
                             new DefaultTerminalFactory()
-                                .setMouseCaptureMode(MouseCaptureMode.CLICK_RELEASE)
+                                .setMouseCaptureMode(MouseCaptureMode.CLICK_RELEASE_DRAG)
                                 .createTerminal()));
       screen.startScreen();
       WindowBasedTextGUI gui = new MultiWindowTextGUI(screen,new DefaultWindowManager(),background);
       gui.addListener(new MoveWindowHandler());
       gui.addListener(new CycleWindowHandler());
       gui.addListener(new ClickFocusHandler());
+      gui.addListener(new DragWindowHandler());
       drawUnit.accept(gui);
     } catch (IOException ioe) {
       throw new RuntimeException("Couldn't start " + ioe);
