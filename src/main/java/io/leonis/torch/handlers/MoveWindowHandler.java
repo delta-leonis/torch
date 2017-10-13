@@ -14,24 +14,25 @@ public class MoveWindowHandler implements Listener {
 
   @Override
   public boolean onUnhandledKeyStroke(final TextGUI textGUI, final KeyStroke keyStroke) {
-    if (keyStroke.isAltDown()) {
-      final Interactable target = textGUI.getFocusedInteractable();
-      final TerminalPosition position = target.getPosition();
-      switch (keyStroke.getKeyType()) {
-        case ArrowDown:
-          target.setPosition(position.withRelative(new TerminalPosition(0, 1)));
-          return true;
-        case ArrowUp:
-          target.setPosition(position.withRelative(new TerminalPosition(0, -1)));
-          return true;
-        case ArrowLeft:
-          target.setPosition(position.withRelative(new TerminalPosition(-1, 0)));
-          return true;
-        case ArrowRight:
-          target.setPosition(position.withRelative(new TerminalPosition(1, 0)));
-          return true;
-      }
+    Window window = ((MultiWindowTextGUI) textGUI).getActiveWindow();
+    if(!keyStroke.isAltDown() || window == null)
+      return false;
+    window.setPosition(window.getPosition().withRelative(this.relativeMove(keyStroke)));
+    return true;
+  }
+
+  private TerminalPosition relativeMove(KeyStroke keyStroke){
+    switch (keyStroke.getKeyType()) {
+      case ArrowDown:
+        return new TerminalPosition(0, 1);
+      case ArrowUp:
+        return new TerminalPosition(0, -1);
+      case ArrowLeft:
+        return new TerminalPosition(-1, 0);
+      case ArrowRight:
+        return new TerminalPosition(1, 0);
+      default:
+        return new TerminalPosition(0, 0);
     }
-    return false;
   }
 }
