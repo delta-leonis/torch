@@ -32,6 +32,10 @@ public final class Torch implements Runnable {
           wat.setComponent(new LineGraph(LineType.THIN, new Gradient(Color.RED, Color.BLUE),
               IntStream.rangeClosed(1, 20).mapToDouble(i -> (double) i)
                   .map(d -> Math.sin(d * 2 * Math.PI / 20d)).boxed().collect(Collectors.toList())));
+          gui.addWindow(new BasicWindow("Test 1"));
+          gui.addWindow(new BasicWindow("Test 2"));
+          gui.addWindow(new BasicWindow("Test 3"));
+          gui.addWindow(new BasicWindow("Test 4"));
           gui.addWindowAndWait(wat);
         },
         new TextBackground(TextColor.ANSI.BLUE, "Background text")
@@ -50,6 +54,7 @@ public final class Torch implements Runnable {
       WindowBasedTextGUI gui = new MultiWindowTextGUI(screen,new DefaultWindowManager(),background);
       gui.addListener(new MoveWindowHandler());
       gui.addListener(new CycleWindowHandler());
+      gui.addListener(new ClickFocusHandler());
       drawUnit.accept(gui);
     } catch (IOException ioe) {
       throw new RuntimeException("Couldn't start " + ioe);
