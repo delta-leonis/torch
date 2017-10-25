@@ -2,7 +2,6 @@ package io.leonis.torch;
 
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.gui2.*;
-import com.googlecode.lanterna.gui2.TextGUI.Listener;
 import com.googlecode.lanterna.screen.*;
 import com.googlecode.lanterna.terminal.*;
 import io.leonis.torch.component.TextBackground;
@@ -55,13 +54,8 @@ public final class Torch implements Runnable {
       WindowBasedTextGUI gui = new MultiWindowTextGUI(screen,new DefaultWindowManager(),background);
       gui.addListener(new MoveWindowHandler());
       gui.addListener(new CycleWindowHandler());
-      gui.addListener(new WindowClickHandler(gui::setActiveWindow));
-      gui.addListener(new WindowClickHandler(window -> {
-        Listener dragHandler = new WindowDragHandler(window);
-        gui.addListener(new StopDragHandler(dragHandler));
-        gui.addListener(dragHandler);
-        return gui; // TODO think about return type :p
-      }));
+      gui.addListener(new ClickWindowHandler());
+      gui.addListener(new StartDragHandler());
       drawUnit.accept(gui);
     } catch (IOException ioe) {
       throw new RuntimeException("Couldn't start " + ioe);
