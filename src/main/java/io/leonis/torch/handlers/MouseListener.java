@@ -9,9 +9,8 @@ import com.googlecode.lanterna.input.*;
 public interface MouseListener extends MultiWindowListener {
 
   @Override
-  default boolean onUnhandledKeyStroke(final WindowBasedTextGUI textGUI,
-      final KeyStroke keyStroke) {
-    return keyStroke instanceof MouseAction && onUnhandledKeyStroke(textGUI,
+  default boolean onUnhandledKeyStroke(final WindowBasedTextGUI gui, final KeyStroke keyStroke) {
+    return keyStroke instanceof MouseAction && onUnhandledKeyStroke(gui,
         (MouseAction) keyStroke);
   }
 
