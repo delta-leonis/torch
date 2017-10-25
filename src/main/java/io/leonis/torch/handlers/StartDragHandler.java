@@ -14,11 +14,11 @@ public class StartDragHandler implements MouseListener {
   public boolean onUnhandledKeyStroke(final WindowBasedTextGUI gui, final MouseAction action) {
     return action.getActionType().equals(MouseActionType.CLICK_DOWN) &&
         new ActiveWindowSelector().apply(gui, action.getPosition())
-              .map(window -> {
-                    Listener dragHandler = new WindowDragHandler(window);
-                    gui.addListener(new StopDragHandler(dragHandler));
-                    gui.addListener(dragHandler);
-                    return window;
-                }).isPresent();
+            .map(window -> {
+              Listener dragHandler = new WindowDragHandler(window);
+              gui.addListener(new StopDragHandler(dragHandler));
+              gui.addListener(dragHandler);
+              return window;
+            }).isPresent();
   }
 }

@@ -3,8 +3,6 @@ package io.leonis.torch.handlers;
 import com.googlecode.lanterna.gui2.*;
 import com.googlecode.lanterna.input.*;
 import io.leonis.torch.ActiveWindowSelector;
-import java.util.function.Function;
-import lombok.AllArgsConstructor;
 
 /**
  * The Class ClickWindowHandler
@@ -15,6 +13,7 @@ import lombok.AllArgsConstructor;
  * @author Jeroen de Jong
  */
 public final class ClickWindowHandler implements MouseListener {
+
   @Override
   public boolean onUnhandledKeyStroke(final WindowBasedTextGUI gui, final MouseAction action) {
     return action.getActionType().equals(MouseActionType.CLICK_DOWN)

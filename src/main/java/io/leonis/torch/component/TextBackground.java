@@ -36,7 +36,7 @@ public class TextBackground extends EmptySpace {
         if (getColor() != null) {
           graphics.setBackgroundColor(getColor());
           text.setBackgroundColor(getColor());
-          Color brighterColor = getColor().toColor().brighter();
+          final Color brighterColor = getColor().toColor().brighter();
           text.setForegroundColor(
               new TextColor.RGB(brighterColor.getRed(), brighterColor.getGreen(),
                   brighterColor.getBlue()));

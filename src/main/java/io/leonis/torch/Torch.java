@@ -26,13 +26,14 @@ public final class Torch implements Runnable {
   private final EmptySpace background;
 
   // TODO Remove. Currently here for debugging LineGraph
-  public static void main(String[] args) throws IOException {
+  public static void main(final String[] args) throws IOException {
     new Thread(new Torch(
         (gui) -> {
           gui.addWindow(new RxWindow("Wat", Flux.intervalMillis(100)
               .map(d -> Math.sin(d * 2 * Math.PI / 20d))
               .buffer(50, 1)
-              .map(data -> new LineGraph(LineType.THIN, new Gradient(Color.RED, Color.BLUE), data))));
+              .map(data -> new LineGraph(LineType.THIN, new Gradient(Color.RED, Color.BLUE),
+                  data))));
           gui.addWindow(new BasicWindow("Test 1"));
           gui.addWindow(new BasicWindow("Test 2"));
           gui.addWindow(new BasicWindow("Test 3"));
@@ -45,19 +46,20 @@ public final class Torch implements Runnable {
   @Override
   public void run() {
     try {
-      Screen screen = new VirtualScreen(
-                        new TerminalScreen(
-                            new DefaultTerminalFactory()
-                                .setMouseCaptureMode(MouseCaptureMode.CLICK_RELEASE_DRAG)
-                                .createTerminal()));
+      final Screen screen = new VirtualScreen(
+          new TerminalScreen(
+              new DefaultTerminalFactory()
+                  .setMouseCaptureMode(MouseCaptureMode.CLICK_RELEASE_DRAG)
+                  .createTerminal()));
       screen.startScreen();
-      WindowBasedTextGUI gui = new MultiWindowTextGUI(screen,new DefaultWindowManager(),background);
+      final WindowBasedTextGUI gui = new MultiWindowTextGUI(screen, new DefaultWindowManager(),
+          background);
       gui.addListener(new MoveWindowHandler());
       gui.addListener(new CycleWindowHandler());
       gui.addListener(new ClickWindowHandler());
       gui.addListener(new StartDragHandler());
       drawUnit.accept(gui);
-    } catch (IOException ioe) {
+    } catch (final IOException ioe) {
       throw new RuntimeException("Couldn't start " + ioe);
     }
   }

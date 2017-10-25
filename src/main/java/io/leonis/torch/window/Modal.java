@@ -14,8 +14,8 @@ public final class Modal implements Window {
   @Delegate
   private final Window target;
 
-  public Modal(Window target) {
-    Set<Hint> hints = new HashSet<>(target.getHints());
+  public Modal(final Window target) {
+    final Set<Hint> hints = new HashSet<>(target.getHints());
     hints.add(Hint.MODAL);
     hints.add(Hint.CENTERED);
     target.setHints(hints);
