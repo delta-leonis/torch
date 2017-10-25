@@ -34,6 +34,7 @@ public final class Gradient implements Function<Double, TextColor.RGB> {
 
   /**
    * Calculate the ratio for a given color channel
+   *
    * @param channel channel to determine color for
    * @param ratio ratio between 0-1
    * @return color value between 0-255

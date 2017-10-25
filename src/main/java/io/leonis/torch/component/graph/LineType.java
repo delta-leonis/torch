@@ -28,7 +28,8 @@ public enum LineType implements Function<Double, TextCharacter> {
 
   /**
    * Create a new LineType
-   * @param defaultCharacter   character if the provided {@link Double} == 1
+   *
+   * @param defaultCharacter character if the provided {@link Double} == 1
    * @param positiveCharacters list of characters to choose, range from 0-.99
    * @param negativeCharacters list of characters to choose, range from -0.99-0
    */
@@ -44,6 +45,7 @@ public enum LineType implements Function<Double, TextCharacter> {
 
   /**
    * Returns the {@link TextCharacter} for the given values.
+   *
    * @param ratio the represented value between -1 and 1. (negative characters chosen if value is
    * negative)
    * @return The {@link TextCharacter} that belongs to the given value.
@@ -59,6 +61,7 @@ public enum LineType implements Function<Double, TextCharacter> {
 
   /**
    * Helper to determine character
+   *
    * @param characterList list to choose from
    * @param value ratio in list to grab character from
    * @return applicable character

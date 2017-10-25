@@ -24,6 +24,7 @@ public final class RxPanel extends Panel {
 
   /**
    * Add components from the publisher to the panel, removing the previous component on next.
+   *
    * @param publisher component publisher
    * @return panel with added component
    */
@@ -45,6 +46,7 @@ public final class RxPanel extends Panel {
   /**
    * Add component from the publisher to the panel containing specific {@link LayoutData}, removing
    * the previous component on next
+   *
    * @param publisher component publisher
    * @param layoutData layout data for the component
    * @return panel with added component

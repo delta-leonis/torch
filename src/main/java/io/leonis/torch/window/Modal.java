@@ -19,6 +19,7 @@ public final class Modal implements Window {
 
   /**
    * Decorate {@code target} as a Window
+   *
    * @param target decoration target
    */
   public Modal(final AbstractWindow target) {

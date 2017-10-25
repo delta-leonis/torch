@@ -8,17 +8,21 @@ import java.awt.Color;
  * The Class TextBackground
  *
  * This class is basically an {@link EmptySpace} with a text on top. The text is a tint brighter
- * than the background color and will be centered based on the current size of the
- * {@link com.googlecode.lanterna.screen.Screen}
+ * than the background color and will be centered based on the current size of the {@link
+ * com.googlecode.lanterna.screen.Screen}
  *
  * @author Jeroen de Jong
  */
 public final class TextBackground extends EmptySpace {
-  /** Background label */
+
+  /**
+   * Background label
+   */
   private final Label text;
 
   /**
-   *  Creates a new TextBackground
+   * Creates a new TextBackground
+   *
    * @param background Color for the background
    * @param text Text to display on top of the background.
    */

@@ -16,6 +16,7 @@ public final class RxWindow extends BasicWindow {
 
   /**
    * Create a new RxWindow
+   *
    * @param title The title of the window
    * @param publisher The publisher for the components, removing the previous component
    */
