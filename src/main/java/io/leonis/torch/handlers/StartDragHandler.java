@@ -15,7 +15,7 @@ import io.leonis.torch.ActiveWindowSelector;
  *
  * @author Jeroen de Jong
  */
-public class StartDragHandler implements MouseListener {
+public final class StartDragHandler implements MouseListener {
 
   @Override
   public boolean onUnhandledKeyStroke(final WindowBasedTextGUI gui, final MouseAction action) {

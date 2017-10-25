@@ -11,7 +11,7 @@ import com.googlecode.lanterna.input.KeyStroke;
  *
  * @author Jeroen de Jong
  */
-public class MoveWindowHandler implements MultiWindowListener {
+public final class MoveWindowHandler implements MultiWindowListener {
 
   @Override
   public boolean onUnhandledKeyStroke(final WindowBasedTextGUI gui, final KeyStroke key) {

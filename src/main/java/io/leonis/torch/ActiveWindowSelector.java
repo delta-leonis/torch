@@ -14,7 +14,7 @@ import java.util.stream.Stream;
  *
  * @author Jeroen de Jong
  */
-public class ActiveWindowSelector implements
+public final class ActiveWindowSelector implements
     BiFunction<WindowBasedTextGUI, TerminalPosition, Optional<Window>> {
 
   @Override

@@ -10,7 +10,7 @@ import com.googlecode.lanterna.input.*;
  *
  * @author Jeroen de Jong
  */
-public class CycleWindowHandler implements MultiWindowListener {
+public final class CycleWindowHandler implements MultiWindowListener {
 
   @Override
   public boolean onUnhandledKeyStroke(final WindowBasedTextGUI textGUI, final KeyStroke keyStroke) {
