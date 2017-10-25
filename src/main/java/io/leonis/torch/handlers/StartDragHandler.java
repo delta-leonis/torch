@@ -6,7 +6,14 @@ import com.googlecode.lanterna.input.*;
 import io.leonis.torch.ActiveWindowSelector;
 
 /**
- * @author jeroen.dejong.
+ * The Class StartDragHandler
+ *
+ * Contains behaviour to add two {@link Listener listeners} to the {@link WindowBasedTextGUI gui} if
+ * a window has been clicked. The {@link WindowDragHandler} handles the dragging of the window,
+ * whilst the {@link StopDragHandler} removes the added {@link Listener listeners} on
+ * {@link MouseActionType#CLICK_RELEASE}.
+ *
+ * @author Jeroen de Jong
  */
 public class StartDragHandler implements MouseListener {
 
