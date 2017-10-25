@@ -4,6 +4,10 @@ import com.googlecode.lanterna.gui2.WindowBasedTextGUI;
 import com.googlecode.lanterna.input.*;
 
 /**
+ * The Class CycleWindowHandler
+ *
+ * Contains logic to cycle the active window by pressing {@code [} or {@code ]}
+ *
  * @author Jeroen de Jong
  */
 public class CycleWindowHandler implements MultiWindowListener {
