@@ -17,6 +17,7 @@ public final class StopDragHandler implements MouseListener {
   public boolean onUnhandledKeyStroke(final WindowBasedTextGUI gui, final MouseAction action) {
     if (action.getActionType().equals(MouseActionType.CLICK_RELEASE)) {
       gui.removeListener(listener);
+      gui.removeListener(this);
       return true;
     }
     return false;
