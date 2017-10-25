@@ -1,27 +1,27 @@
 package io.leonis.torch.handlers;
 
 import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.gui2.*;
-import com.googlecode.lanterna.gui2.TextGUI.Listener;
+import com.googlecode.lanterna.gui2.WindowBasedTextGUI;
 import com.googlecode.lanterna.input.KeyStroke;
 
 /**
- * ss
+ * The Class MoveWindowHandler.
  *
  * @author jeroen.dejong.
  */
-public class MoveWindowHandler implements Listener {
+public class MoveWindowHandler implements MultiWindowListener {
 
   @Override
-  public boolean onUnhandledKeyStroke(final TextGUI textGUI, final KeyStroke keyStroke) {
-    Window window = ((MultiWindowTextGUI) textGUI).getActiveWindow();
-    if(!keyStroke.isAltDown())
-      return false;
-    window.setPosition(window.getPosition().withRelative(this.relativeMove(keyStroke)));
-    return true;
+  public boolean onUnhandledKeyStroke(final WindowBasedTextGUI textGUI, final KeyStroke keyStroke) {
+    if (keyStroke.isAltDown()) {
+      textGUI.getActiveWindow().setPosition(
+          textGUI.getActiveWindow().getPosition().withRelative(this.relativeMove(keyStroke)));
+      return true;
+    }
+    return false;
   }
 
-  private TerminalPosition relativeMove(KeyStroke keyStroke){
+  private TerminalPosition relativeMove(final KeyStroke keyStroke) {
     switch (keyStroke.getKeyType()) {
       case ArrowDown:
         return new TerminalPosition(0, 1);
