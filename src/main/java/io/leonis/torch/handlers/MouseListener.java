@@ -4,7 +4,7 @@ import com.googlecode.lanterna.gui2.WindowBasedTextGUI;
 import com.googlecode.lanterna.input.*;
 
 /**
- * @author jeroen.dejong.
+ * @author Jeroen de Jong
  */
 public interface MouseListener extends MultiWindowListener {
 

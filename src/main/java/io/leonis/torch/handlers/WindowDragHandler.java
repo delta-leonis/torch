@@ -5,7 +5,7 @@ import com.googlecode.lanterna.input.*;
 import lombok.AllArgsConstructor;
 
 /**
- * @author jeroen.dejong.
+ * @author Jeroen de Jong
  */
 @AllArgsConstructor
 public final class WindowDragHandler implements MouseListener {

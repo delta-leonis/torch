@@ -5,7 +5,7 @@ import com.googlecode.lanterna.gui2.TextGUI.Listener;
 import com.googlecode.lanterna.input.KeyStroke;
 
 /**
- * @author jeroen.dejong.
+ * @author Jeroen de Jong
  */
 public interface MultiWindowListener extends Listener {
 

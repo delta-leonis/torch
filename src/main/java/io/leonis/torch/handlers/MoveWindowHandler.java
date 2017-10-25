@@ -7,7 +7,7 @@ import com.googlecode.lanterna.input.KeyStroke;
 /**
  * The Class MoveWindowHandler.
  *
- * @author jeroen.dejong.
+ * @author Jeroen de Jong
  */
 public class MoveWindowHandler implements MultiWindowListener {
 

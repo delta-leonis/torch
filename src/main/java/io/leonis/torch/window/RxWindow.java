@@ -6,7 +6,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
 /**
- * @author jeroen.dejong.
+ * @author Jeroen de Jong
  */
 public final class RxWindow extends BasicWindow {
 
