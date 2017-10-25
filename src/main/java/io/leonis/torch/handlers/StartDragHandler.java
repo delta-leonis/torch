@@ -2,7 +2,7 @@ package io.leonis.torch.handlers;
 
 import com.googlecode.lanterna.gui2.TextGUI.Listener;
 import com.googlecode.lanterna.gui2.WindowBasedTextGUI;
-import com.googlecode.lanterna.input.MouseAction;
+import com.googlecode.lanterna.input.*;
 import io.leonis.torch.ActiveWindowSelector;
 
 /**
@@ -12,7 +12,8 @@ public class StartDragHandler implements MouseListener {
 
   @Override
   public boolean onUnhandledKeyStroke(final WindowBasedTextGUI gui, final MouseAction action) {
-    return new ActiveWindowSelector().apply(gui, action.getPosition())
+    return action.getActionType().equals(MouseActionType.CLICK_DOWN) &&
+        new ActiveWindowSelector().apply(gui, action.getPosition())
               .map(window -> {
                     Listener dragHandler = new WindowDragHandler(window);
                     gui.addListener(new StopDragHandler(dragHandler));
