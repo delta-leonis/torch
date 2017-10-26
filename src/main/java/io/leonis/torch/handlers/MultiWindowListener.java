@@ -15,8 +15,8 @@ public interface MultiWindowListener extends Listener {
 
   @Override
   default boolean onUnhandledKeyStroke(final TextGUI textGUI, final KeyStroke keyStroke) {
-    return textGUI instanceof WindowBasedTextGUI && onUnhandledKeyStroke(
-        (MultiWindowTextGUI) textGUI, keyStroke);
+    return textGUI instanceof WindowBasedTextGUI &&
+        onUnhandledKeyStroke((MultiWindowTextGUI) textGUI, keyStroke);
   }
 
   /**

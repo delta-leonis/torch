@@ -14,8 +14,8 @@ public final class CycleWindowHandler implements MultiWindowListener {
 
   @Override
   public boolean onUnhandledKeyStroke(final WindowBasedTextGUI textGUI, final KeyStroke keyStroke) {
-    if (keyStroke.getKeyType().equals(KeyType.Character) && "[]"
-        .contains(keyStroke.getCharacter().toString())) {
+    if (keyStroke.getKeyType().equals(KeyType.Character) &&
+        "[]".contains(keyStroke.getCharacter().toString())) {
       textGUI.cycleActiveWindow(keyStroke.getCharacter().equals('['));
       return true;
     }

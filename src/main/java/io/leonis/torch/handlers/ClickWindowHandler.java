@@ -16,8 +16,9 @@ public final class ClickWindowHandler implements MouseListener {
 
   @Override
   public boolean onUnhandledKeyStroke(final WindowBasedTextGUI gui, final MouseAction action) {
-    return action.getActionType().equals(MouseActionType.CLICK_DOWN)
-        && new ActiveWindowSelector().apply(gui, action.getPosition()).map(gui::setActiveWindow)
-        .isPresent();
+    return action.getActionType().equals(MouseActionType.CLICK_DOWN) &&
+        new ActiveWindowSelector().apply(gui, action.getPosition())
+            .map(gui::setActiveWindow)
+            .isPresent();
   }
 }
