@@ -69,7 +69,7 @@ public class LineGraph extends AbstractComponent<LineGraph> {
               if (number > 0d) {
                 IntStream.rangeClosed(xAxisRow, (int) Math.ceil(rowValue))
                     .forEach(row -> {
-                      final double ratio = ((double) this.getRows() - row) / ((double) this.getRows() - 0);
+                      final double ratio = (this.getRows() - row) / (double) this.getRows();
                       image.setCharacterAt(
                           currentColumn, this.getRows() - row,
                           LineGraph.this.getLine().apply(row > rowValue ? rowValue : row)
@@ -78,7 +78,7 @@ public class LineGraph extends AbstractComponent<LineGraph> {
               } else {
                 IntStream.rangeClosed((int) Math.floor(rowValue), xAxisRow)
                     .forEach(row -> {
-                      final double ratio = ((double) this.getRows() - row) / ((double) this.getRows() - 0);
+                      final double ratio = (this.getRows() - row) / (double) this.getRows();
                       image.setCharacterAt(
                           currentColumn, this.getRows() - row,
                           LineGraph.this.getLine().apply(row > rowValue ? row : -rowValue)
