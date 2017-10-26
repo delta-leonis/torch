@@ -19,12 +19,12 @@ javadoc {
 
 dependencies {
     // rx
-    compile 'io.projectreactor:reactor-core:3.0.5.RELEASE'
+    compile 'io.projectreactor:reactor-core:3.1.1.RELEASE'
 
     // java impl
-    compile 'org.projectlombok:lombok:1.16.14'
+    compile 'org.projectlombok:lombok:1.16.16'
 
     // ui
-    compile 'com.googlecode.lanterna:lanterna:3.0.0-rc1'
+    compile 'com.googlecode.lanterna:lanterna:3.0.0'
 }
 
