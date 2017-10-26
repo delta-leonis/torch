@@ -23,7 +23,7 @@ public final class WindowDragHandler implements MouseListener {
   @Override
   public boolean onUnhandledKeyStroke(final WindowBasedTextGUI gui, final MouseAction action) {
     if (action.getActionType().equals(MouseActionType.DRAG)) {
-      window.setPosition(action.getPosition());
+      this.window.setPosition(action.getPosition());
       return true;
     }
     return false;

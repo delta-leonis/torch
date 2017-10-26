@@ -15,7 +15,7 @@ public interface MouseListener extends MultiWindowListener {
   @Override
   default boolean onUnhandledKeyStroke(final WindowBasedTextGUI gui, final KeyStroke keyStroke) {
     return keyStroke instanceof MouseAction &&
-        onUnhandledKeyStroke(gui, (MouseAction) keyStroke);
+        this.onUnhandledKeyStroke(gui, (MouseAction) keyStroke);
   }
 
   /**

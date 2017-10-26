@@ -26,9 +26,9 @@ public final class Gradient implements Function<Double, TextColor.RGB> {
    */
   public TextColor.RGB apply(final Double ratio) {
     return new RGB(
-        ratioForChannel(Color::getRed, ratio),
-        ratioForChannel(Color::getGreen, ratio),
-        ratioForChannel(Color::getBlue, ratio)
+        this.ratioForChannel(Color::getRed, ratio),
+        this.ratioForChannel(Color::getGreen, ratio),
+        this.ratioForChannel(Color::getBlue, ratio)
     );
   }
 
@@ -40,6 +40,6 @@ public final class Gradient implements Function<Double, TextColor.RGB> {
    * @return color value between 0-255
    */
   private int ratioForChannel(final Function<? super Color, Integer> channel, final Double ratio) {
-    return (int) ((1 - ratio) * channel.apply(minColor) + ratio * channel.apply(maxColor));
+    return (int) ((1 - ratio) * channel.apply(this.minColor) + ratio * channel.apply(this.maxColor));
   }
 }

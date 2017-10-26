@@ -52,10 +52,10 @@ public enum LineType implements Function<Double, TextCharacter> {
    */
   public TextCharacter apply(final Double ratio) {
     if (ratio % 1 == 0) {
-      return new TextCharacter(defaultCharacter);
+      return new TextCharacter(this.defaultCharacter);
     }
     return new TextCharacter(
-        this.valueToCharacter((ratio < 0) ? negativeCharacters : positiveCharacters, ratio)
+        this.valueToCharacter((ratio < 0) ? this.negativeCharacters : this.positiveCharacters, ratio)
     );
   }
 

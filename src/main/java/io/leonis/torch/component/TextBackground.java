@@ -3,6 +3,7 @@ package io.leonis.torch.component;
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.gui2.*;
 import java.awt.Color;
+import lombok.*;
 
 /**
  * The Class TextBackground
@@ -13,46 +14,38 @@ import java.awt.Color;
  *
  * @author Jeroen de Jong
  */
-public final class TextBackground extends EmptySpace {
+@Value
+@EqualsAndHashCode(callSuper = true)
+public final class TextBackground extends AbstractComponent<TextBackground> {
 
   /**
    * Background label
    */
-  private final Label text;
-
-  /**
-   * Creates a new TextBackground
-   *
-   * @param background Color for the background
-   * @param text Text to display on top of the background.
-   */
-  public TextBackground(final TextColor background, final String text) {
-    super(background);
-    this.text = new Label(text);
-  }
+  private final String text;
+  private final TextColor color;
 
   @Override
-  protected ComponentRenderer<EmptySpace> createDefaultRenderer() {
-    return new ComponentRenderer<EmptySpace>() {
+  protected ComponentRenderer<TextBackground> createDefaultRenderer() {
+    return new ComponentRenderer<TextBackground>() {
 
       @Override
-      public TerminalSize getPreferredSize(final EmptySpace component) {
+      public TerminalSize getPreferredSize(final TextBackground component) {
         return component.getParent().getSize();
       }
 
       @Override
-      public void drawComponent(final TextGUIGraphics graphics, final EmptySpace component) {
+      public void drawComponent(final TextGUIGraphics graphics, final TextBackground component) {
+        // TODO this needs some cleanup; also the text should be centered
         graphics.applyThemeStyle(component.getThemeDefinition().getNormal());
-        if (getColor() != null) {
-          graphics.setBackgroundColor(getColor());
-          text.setBackgroundColor(getColor());
-          final Color brighterColor = getColor().toColor().brighter();
-          text.setForegroundColor(
-              new TextColor.RGB(brighterColor.getRed(), brighterColor.getGreen(),
-                  brighterColor.getBlue()));
-        }
+        graphics.setBackgroundColor(component.getColor());
         graphics.fill(' ');
-        // TODO this should be centered
+
+        final Label text = new Label(component.getText());
+        text.setBackgroundColor(component.getColor());
+        final Color brighterColor = component.getColor().toColor().brighter();
+        text.setForegroundColor(
+            new TextColor.RGB(brighterColor.getRed(), brighterColor.getGreen(),
+                brighterColor.getBlue()));
         text.draw(graphics);
       }
     };

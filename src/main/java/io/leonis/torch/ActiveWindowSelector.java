@@ -26,7 +26,7 @@ public final class ActiveWindowSelector implements
     return Stream.concat(
         windows.subList(activeWindow, windows.size()).stream(),
         windows.subList(0, activeWindow).stream())
-        .filter(window -> intersecting(window, terminalPosition))
+        .filter(window -> this.intersecting(window, terminalPosition))
         .findFirst();
   }
 
