@@ -16,13 +16,6 @@ import reactor.core.scheduler.Schedulers;
 public final class RxPanel extends Panel {
 
   /**
-   * Create a new RxPanel
-   */
-  public RxPanel() {
-    super();
-  }
-
-  /**
    * Add components from the publisher to the panel, removing the previous component on next.
    *
    * @param publisher component publisher
