@@ -27,7 +27,6 @@ public class LineGraph extends AbstractComponent<LineGraph> {
     this(LineType.THICK, ignored -> new TextColor.RGB(0, 0, 255), data);
   }
 
-  // TODO might need to be moved to a data container or smth?
   private double getMax() {
     return this.data.stream().mapToDouble(Number::doubleValue).max().orElse(1);
   }
