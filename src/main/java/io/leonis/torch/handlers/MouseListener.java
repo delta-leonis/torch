@@ -4,7 +4,7 @@ import com.googlecode.lanterna.gui2.WindowBasedTextGUI;
 import com.googlecode.lanterna.input.*;
 
 /**
- * The Interface MultiWindowListener
+ * The Interface MultiWindowListener.
  *
  * Extends the {@link MultiWindowListener} interface to work for {@link MouseAction}.
  *

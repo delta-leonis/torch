@@ -5,7 +5,7 @@ import com.googlecode.lanterna.gui2.WindowBasedTextGUI;
 import com.googlecode.lanterna.input.KeyStroke;
 
 /**
- * The Class MoveWindowHandler
+ * The Class MoveWindowHandler.
  *
  * Contains logic to move the active window with the arrow keys whilst holding alt.
  *

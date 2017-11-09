@@ -7,10 +7,10 @@ import java.util.function.BiFunction;
 import java.util.stream.Stream;
 
 /**
- * The Class ActiveWindowSelector
+ * The Class ActiveWindowSelector.
  *
  * This class contains the ability to find a {@link Window} at a provided {@link TerminalPosition}
- * and {@link WindowBasedTextGUI}
+ * and {@link WindowBasedTextGUI}.
  *
  * @author Jeroen de Jong
  */

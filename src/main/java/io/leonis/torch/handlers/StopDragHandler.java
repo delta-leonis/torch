@@ -6,7 +6,7 @@ import com.googlecode.lanterna.input.*;
 import lombok.AllArgsConstructor;
 
 /**
- * The Class StopDragHandler
+ * The Class StopDragHandler.
  *
  * Contains the logic to remove the provided {@link Listener} and itself on {@link
  * MouseActionType#CLICK_RELEASE}.

@@ -5,7 +5,7 @@ import java.util.*;
 import lombok.experimental.Delegate;
 
 /**
- * The Class Modal
+ * The Class Modal.
  *
  * A decorator for a {@link Window} to make it behave as an modal. Simply adding {@link Hint#MODAL}
  * and {@link Hint#CENTERED} as hints and enabling closing with escape.

@@ -7,7 +7,7 @@ import java.util.function.Function;
 import lombok.AllArgsConstructor;
 
 /**
- * The Class Gradient
+ * The Class Gradient.
  *
  * Provides an {@link TextColor.RGB} between two provided color at a given ratio.
  *

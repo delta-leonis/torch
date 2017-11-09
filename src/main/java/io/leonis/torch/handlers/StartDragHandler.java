@@ -6,7 +6,7 @@ import com.googlecode.lanterna.input.*;
 import io.leonis.torch.ActiveWindowSelector;
 
 /**
- * The Class StartDragHandler
+ * The Class StartDragHandler.
  *
  * Contains behaviour to add two {@link Listener listeners} to the {@link WindowBasedTextGUI gui} if
  * a window has been clicked. The {@link WindowDragHandler} handles the dragging of the window,

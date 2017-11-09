@@ -5,7 +5,7 @@ import com.googlecode.lanterna.input.*;
 import io.leonis.torch.ActiveWindowSelector;
 
 /**
- * The Class ClickWindowHandler
+ * The Class ClickWindowHandler.
  *
  * Sets the {@link Window} on which an {@link MouseActionType#CLICK_DOWN} is fired as the active
  * {@link Window}.
