@@ -6,11 +6,10 @@ import com.googlecode.lanterna.gui2.*;
 import lombok.*;
 
 /**
- * The Class ComponentBackground
+ * The Class ComponentBackground.
  *
- * This class is basically an {@link EmptySpace} with a text on top. The text is a tint brighter
- * than the background color and will be centered based on the current size of the {@link
- * com.googlecode.lanterna.screen.Screen}
+ * This class can be used as a background in {@link MultiWindowTextGUI}. 
+ * It expects an {@link Component} which will be rendered.
  *
  * @author Jeroen de Jong
  * @author Thomas Hakkers
