@@ -41,8 +41,8 @@ public final class CenteredLabel extends AbstractComponent<CenteredLabel> {
       public void drawComponent(final TextGUIGraphics graphics, final CenteredLabel component) {
         IntStream.range(0, component.getLines().size())
             .forEach(index -> graphics.putString(
-                (graphics.getSize().getColumns() - component.getPreferredSize().getColumns())/2,
-                (graphics.getSize().getRows() - component.getPreferredSize().getRows())/2 + index,
+                (graphics.getSize().getColumns() - component.getPreferredSize().getColumns()) / 2,
+                (graphics.getSize().getRows() - component.getPreferredSize().getRows()) / 2 + index,
                 component.getLines().get(index)
             ));
       }

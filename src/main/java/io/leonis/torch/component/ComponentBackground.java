@@ -22,7 +22,7 @@ public final class ComponentBackground extends AbstractComponent<ComponentBackgr
   private final TextColor backgroundColor;
 
   private TextColor getForegroundColor() {
-    return  new TextColor.RGB(
+    return new TextColor.RGB(
         this.backgroundColor.toColor().brighter().getRed(),
         this.backgroundColor.toColor().brighter().getGreen(),
         this.backgroundColor.toColor().brighter().getBlue());
