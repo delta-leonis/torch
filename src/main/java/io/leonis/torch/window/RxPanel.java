@@ -6,10 +6,10 @@ import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
 /**
- * The Class RxPanel
+ * The Class RxPanel.
  *
- * An wrapper for {@link Panel} which adds the functionality to add {@link Publisher<Component>} as
- * components to the panel
+ * An wrapper for {@link Panel} which adds the functionality to add {@link Publisher} as
+ * components to the panel.
  *
  * @author Jeroen de Jong
  */

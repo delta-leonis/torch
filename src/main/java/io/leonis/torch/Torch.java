@@ -31,7 +31,8 @@ public final class Torch implements Runnable {
       final WindowBasedTextGUI gui = new MultiWindowTextGUI(screen, new DefaultWindowManager(),
           this.background);
       gui.addListener(new MoveWindowHandler());
-      gui.addListener(new CycleWindowHandler());
+      gui.addListener(new CycleWindowHandler('[', false));
+      gui.addListener(new CycleWindowHandler(']', true));
       gui.addListener(new ClickWindowHandler());
       gui.addListener(new StartDragHandler());
       this.drawFunction.accept(gui);

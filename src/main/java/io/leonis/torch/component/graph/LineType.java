@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.function.Function;
 
 /**
- * The Class LineType
+ * The Class LineType.
  *
  * Provides a {@link TextCharacter} appropriate for a provided ratio.
  *

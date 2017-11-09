@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 import lombok.*;
 
 /**
- * The {@link Component} LineGraph
+ * The Class LineGraph.
  *
  * @author Jeroen de Jong
  * @author Thomas Hakkers
