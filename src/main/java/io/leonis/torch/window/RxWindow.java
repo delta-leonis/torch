@@ -6,9 +6,9 @@ import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
 /**
- * The Class RxWindow
+ * The Class RxWindow.
  *
- * A simple {@link Window} accepting a {@link Publisher<Component>} providing it's component
+ * A simple {@link Window} accepting a {@link Publisher} providing it's {@link Component}.
  *
  * @author Jeroen de Jong
  */
