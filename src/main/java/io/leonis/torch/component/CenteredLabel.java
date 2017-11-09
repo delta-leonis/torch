@@ -16,7 +16,6 @@ import lombok.*;
 @AllArgsConstructor
 public final class CenteredLabel extends AbstractComponent<CenteredLabel> {
   private final String text;
-  private final TextColor textColor;
 
   @Override
   protected synchronized TerminalSize calculatePreferredSize() {
@@ -40,11 +39,10 @@ public final class CenteredLabel extends AbstractComponent<CenteredLabel> {
 
       @Override
       public void drawComponent(final TextGUIGraphics graphics, final CenteredLabel component) {
-        graphics.setForegroundColor(component.textColor);
         IntStream.range(0, component.getLines().size())
             .forEach(index -> graphics.putString(
-                graphics.getSize().getColumns() / 2 - component.getPreferredSize().getColumns()/2,
-                graphics.getSize().getRows() / 2 - component.getPreferredSize().getRows()/2 + index,
+                (graphics.getSize().getColumns() - component.getPreferredSize().getColumns())/2,
+                (graphics.getSize().getRows() - component.getPreferredSize().getRows())/2 + index,
                 component.getLines().get(index)
             ));
       }
