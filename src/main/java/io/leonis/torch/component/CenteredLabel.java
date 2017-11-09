@@ -13,15 +13,15 @@ import lombok.*;
  *
  * @author Jeroen de Jong
  */
-@Value
-public class CenteredLabel extends AbstractComponent<CenteredLabel> {
+@AllArgsConstructor
+public final class CenteredLabel extends AbstractComponent<CenteredLabel> {
   private final String text;
   private final TextColor textColor;
 
   @Override
   protected synchronized TerminalSize calculatePreferredSize() {
     return new TerminalSize(
-        Collections.max(this.getLines(), Comparator.comparing(String::length)).length(),
+        this.getLines().stream().mapToInt(String::length).max().orElse(0),
         this.getLines().size()
     );
   }
@@ -40,15 +40,13 @@ public class CenteredLabel extends AbstractComponent<CenteredLabel> {
 
       @Override
       public void drawComponent(final TextGUIGraphics graphics, final CenteredLabel component) {
-        graphics.setForegroundColor(component.getTextColor());
+        graphics.setForegroundColor(component.textColor);
         IntStream.range(0, component.getLines().size())
-            .forEach(index -> {
-              graphics.putString(
-                  graphics.getSize().getColumns() / 2 - component.getPreferredSize().getColumns()/2,
-                  graphics.getSize().getRows() / 2 - component.getPreferredSize().getRows()/2 + index,
-                  component.getLines().get(index)
-              );
-            });
+            .forEach(index -> graphics.putString(
+                graphics.getSize().getColumns() / 2 - component.getPreferredSize().getColumns()/2,
+                graphics.getSize().getRows() / 2 - component.getPreferredSize().getRows()/2 + index,
+                component.getLines().get(index)
+            ));
       }
     };
   }

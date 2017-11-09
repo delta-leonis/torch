@@ -1,16 +1,12 @@
 package io.leonis.torch.component;
 
 import com.googlecode.lanterna.*;
-import com.googlecode.lanterna.graphics.*;
 import com.googlecode.lanterna.gui2.*;
-import java.awt.Color;
-import java.util.*;
 
-import java.util.stream.Stream;
 import lombok.*;
 
 /**
- * The Class TextBackground
+ * The Class ComponentBackground
  *
  * This class is basically an {@link EmptySpace} with a text on top. The text is a tint brighter
  * than the background color and will be centered based on the current size of the {@link
@@ -21,16 +17,16 @@ import lombok.*;
  */
 @Value
 @EqualsAndHashCode(callSuper = true)
-public final class TextBackground extends AbstractComponent<TextBackground> {
+public final class ComponentBackground extends AbstractComponent<ComponentBackground> {
 
   /**
-   * Background label
+   * Background component
    */
-  private final String text;
+  private final Component component;
   private final TextColor backgroundColor;
 
 
-  private TextColor getTextColor() {
+  private TextColor getForegroundColor() {
     return  new TextColor.RGB(
         this.backgroundColor.toColor().brighter().getRed(),
         this.backgroundColor.toColor().brighter().getGreen(),
@@ -38,20 +34,21 @@ public final class TextBackground extends AbstractComponent<TextBackground> {
   }
 
   @Override
-  protected ComponentRenderer<TextBackground> createDefaultRenderer() {
-    return new ComponentRenderer<TextBackground>() {
+  protected ComponentRenderer<ComponentBackground> createDefaultRenderer() {
+    return new ComponentRenderer<ComponentBackground>() {
 
       @Override
-      public TerminalSize getPreferredSize(final TextBackground component) {
+      public TerminalSize getPreferredSize(final ComponentBackground component) {
         return component.getParent().getSize();
       }
 
       @Override
-      public void drawComponent(final TextGUIGraphics graphics, final TextBackground component) {
+      public void drawComponent(final TextGUIGraphics graphics, final ComponentBackground component) {
         graphics.applyThemeStyle(component.getThemeDefinition().getNormal());
         graphics.setBackgroundColor(component.getBackgroundColor());
+        graphics.setForegroundColor(component.getForegroundColor());
         graphics.fill(' ');
-        new CenteredLabel(component.getText(), component.getTextColor()).draw(graphics);
+        component.getComponent().draw(graphics);
       }
     };
   }

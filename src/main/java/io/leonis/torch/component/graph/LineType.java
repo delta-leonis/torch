@@ -13,13 +13,13 @@ import java.util.function.Function;
  */
 public enum LineType implements Function<Double, TextCharacter> {
   THICK(
-      '█',
-      Arrays.asList('▄'),
-      Arrays.asList('▀')
+      'l',
+      Arrays.asList('d'),
+      Arrays.asList('p')
   ),
   THIN(
       '|',
-      Arrays.asList('.', ':', '¡'),
+      Arrays.asList('.', ':', 'd'),
       Arrays.asList('\'', ':', '!')
   );
 
