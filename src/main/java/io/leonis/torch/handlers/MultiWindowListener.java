@@ -23,7 +23,8 @@ public interface MultiWindowListener extends Listener {
    * This method should be called when there was user input that wasn't handled by the GUI. It will
    * fire the {@code onUnhandledKeyStroke(..)} method on any registered listener.
    *
-   * @param keyStroke The {@code KeyStroke} that wasn't handled by the GUI
+   * @param textGUI The {@link WindowBasedTextGUI} that received the {@link WindowBasedTextGUI}
+   * @param keyStroke The {@link KeyStroke} that wasn't handled by the GUI
    * @return {@code true} if at least one of the listeners handled the key stroke, this will signal
    * to the GUI that it needs to be redrawn again.
    */
