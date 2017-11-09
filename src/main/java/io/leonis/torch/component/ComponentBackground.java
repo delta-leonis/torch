@@ -19,12 +19,8 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = true)
 public final class ComponentBackground extends AbstractComponent<ComponentBackground> {
 
-  /**
-   * Background component
-   */
   private final Component component;
   private final TextColor backgroundColor;
-
 
   private TextColor getForegroundColor() {
     return  new TextColor.RGB(
