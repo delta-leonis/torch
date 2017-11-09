@@ -1,6 +1,4 @@
 # `torch`
-> project torch v1.0-SNAPSHOT
-
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/fc76e0a4c88e45af968f40e2584da92d)](https://www.codacy.com/app/delta-leonis/torch?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=delta-leonis/torch&amp;utm_campaign=Badge_Grade)
 [![CircleCI](https://circleci.com/gh/delta-leonis/torch.svg?style=svg)](https://circleci.com/gh/delta-leonis/torch)
 You'll need at least Java 1.8 ([jre](https://www.java.com/download/)
@@ -32,7 +30,7 @@ Make sure you have `gradle>=v2.10` installed. Run the following to build the app
 This project is licensed under the AGPL version 3 license (see LICENSE).
 
 ```
-torch - project torch v1.0-SNAPSHOT
+torch - delta leonis
 Copyright (C) 2017 Rimon Oz, Jeroen de Jong, Ryan Meulenkamp, Thomas Hakkers
 
 This program is free software: you can redistribute it and/or modify
