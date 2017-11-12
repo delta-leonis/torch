@@ -9,7 +9,7 @@ apply plugin: 'signing'
 apply plugin: 'maven'
 
 group 'io.leonis'
-version '0.0.2'
+version '0.0.1'
 archivesBaseName = "torch"
 rootProject.description = 'reactive lanterna extension'
 sourceCompatibility = 1.8
