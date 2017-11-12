@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
  * @author Thomas Hakkers
  */
 @AllArgsConstructor
-public final class Gradient implements Function<Double, TextColor.RGB> {
+public final class Gradient implements Function<Double, TextColor> {
 
   private final Color minColor, maxColor;
 

@@ -20,7 +20,7 @@ import lombok.*;
 public class LineGraph extends AbstractComponent<LineGraph> {
 
   private final Function<Double, TextCharacter> line;
-  private final Function<Double, TextColor.RGB> lineColor;
+  private final Function<Double, TextColor> lineColor;
   private final List<Double> data;
 
   public LineGraph(final List<Double> data) {
