@@ -15,9 +15,6 @@ rootProject.description = 'reactive lanterna extension'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-if (!isFamily(FAMILY_WINDOWS) && !isFamily(FAMILY_MAC) && !isFamily(FAMILY_UNIX))
-    throw new GradleException("Unsupported operating system!")
-
 repositories {
     mavenCentral()
 }
@@ -25,10 +22,6 @@ repositories {
 javadoc {
     source = sourceSets.main.allJava
     classpath = configurations.compile
-}
-
-compileJava {
-    options.compilerArgs << '-parameters'
 }
 
 dependencies {
