@@ -20,7 +20,8 @@ public final class CycleWindowHandler implements MultiWindowListener {
 
   @Override
   public boolean onUnhandledKeyStroke(final WindowBasedTextGUI textGUI, final KeyStroke keyStroke) {
-    if (keyStroke.getCharacter().equals(this.character)) {
+    if (keyStroke.getKeyType().equals(KeyType.Character) &&
+        keyStroke.getCharacter().equals(this.character)) {
       textGUI.cycleActiveWindow(this.reverse);
       return true;
     }
