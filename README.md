@@ -1,16 +1,29 @@
 # `torch`
+>reactive lanterna extension
+
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/fc76e0a4c88e45af968f40e2584da92d)](https://www.codacy.com/app/delta-leonis/torch?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=delta-leonis/torch&amp;utm_campaign=Badge_Grade)
 [![CircleCI](https://circleci.com/gh/delta-leonis/torch.svg?style=svg)](https://circleci.com/gh/delta-leonis/torch)
+
 You'll need at least Java 1.8 ([jre](https://www.java.com/download/)
-/[jdk](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html)) 
+/[jdk](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html))
 to run `torch`.
 
-## How to use
+## Dependency
 
-In order to use `torch` clone this repository:
+#### Maven
 
 ```
-  git clone git@github.com:delta-leonis/torch.git
+<dependency>
+    <groupId>io.leonis</groupId>
+    <artifactId>torch</artifactId>
+    <version>0.0.1</version>
+</dependency>
+```
+
+#### Gradle
+
+```
+compile 'io.leonis:torch:0.0.1'
 ```
 
 ## Documentation
