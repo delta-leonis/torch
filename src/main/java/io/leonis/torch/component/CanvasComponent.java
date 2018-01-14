@@ -9,13 +9,18 @@ import lombok.AllArgsConstructor;
 /**
  * The class CanvasComponent.
  *
- * Draws a rectangle using {@link BiFunction backgroundSupplier} to determine the color at each
- * coordinate.
+ * Draws a rectangle of a specified size using a provided {@link BiFunction backgroundSupplier} to
+ * determine the color at each coordinate.
  *
  * @author Jeroen de Jong
  */
 @AllArgsConstructor
 public class CanvasComponent extends AbstractComponent<CanvasComponent> {
+
+  /**
+   * Number of columns and rows of the canvas.
+   */
+  private final int columns, rows;
 
   /**
    * Function to determine background color at a specific position.
@@ -27,15 +32,15 @@ public class CanvasComponent extends AbstractComponent<CanvasComponent> {
     return new ComponentRenderer<CanvasComponent>() {
       @Override
       public TerminalSize getPreferredSize(final CanvasComponent component) {
-        return new TerminalSize(0, 0);
+        return new TerminalSize(columns, rows);
       }
 
       @Override
       public void drawComponent(final TextGUIGraphics graphics, final CanvasComponent component) {
-        IntStream.range(0, this.getPreferredSize(component).getColumns()).forEach(x ->
-            IntStream.range(0, this.getPreferredSize(component).getRows()).forEach(y -> {
-              graphics.setBackgroundColor(backgroundSupplier.apply(x, y));
-              graphics.setCharacter(x, y, ' ');
+        IntStream.range(0, columns).forEach(column ->
+            IntStream.range(0, rows).forEach(row -> {
+              graphics.setBackgroundColor(backgroundSupplier.apply(column, row));
+              graphics.setCharacter(column, row, ' ');
             }));
       }
     };
