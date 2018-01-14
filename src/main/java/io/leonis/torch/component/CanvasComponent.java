@@ -9,7 +9,8 @@ import lombok.AllArgsConstructor;
 /**
  * The class CanvasComponent.
  *
- * Draws a rectangle using {@link BiFunction backgroundSupplier} to determine the color at each coordinate.
+ * Draws a rectangle using {@link BiFunction backgroundSupplier} to determine the color at each
+ * coordinate.
  *
  * @author Jeroen de Jong
  */
@@ -17,7 +18,7 @@ import lombok.AllArgsConstructor;
 public class CanvasComponent extends AbstractComponent<CanvasComponent> {
 
   /**
-   * Function to determine background color at a specific position
+   * Function to determine background color at a specific position.
    */
   private final BiFunction<Integer, Integer, TextColor> backgroundSupplier;
 
