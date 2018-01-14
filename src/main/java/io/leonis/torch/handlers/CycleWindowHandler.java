@@ -10,7 +10,6 @@ import lombok.AllArgsConstructor;
  * Contains logic to cycle the active window by pressing a provided {@link Character}. If reverse is
  * {@code true} the windows will cycle in reverse order.
  *
- *
  * @author Jeroen de Jong
  */
 @AllArgsConstructor
