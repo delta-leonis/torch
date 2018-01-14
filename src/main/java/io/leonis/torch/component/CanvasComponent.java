@@ -9,7 +9,7 @@ import lombok.AllArgsConstructor;
 /**
  * The class CanvasComponent.
  *
- * Draws an rectangle using {@code backgroundSupplier} to determine the color at each coordinate
+ * Draws a rectangle using {@link BiFunction backgroundSupplier} to determine the color at each coordinate.
  *
  * @author Jeroen de Jong
  */
